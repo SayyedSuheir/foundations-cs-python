@@ -3,7 +3,7 @@ def main():
     print("Please choose from menu below:\n1.Add Matrices\n2.Check Rotation\n3.Invert Dictionary\n4.Convert Matrix to Dictionary\n5.Check Palindrome\n6.Search for an Element & Merge Sort\n7.Exit\n")
     #Let User choose
     user_choice = int(input("Please choose number from 1 to 7: "))
-    
+    #O(1):Constant 
     while user_choice > 0 and user_choice <=7 :
     
     #check user input
