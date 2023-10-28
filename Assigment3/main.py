@@ -56,24 +56,57 @@ def CheckRotation():
     for i in range(row2):
         mat2=[]
         for j in range(col2):
-         elements = int(input("Enter the values of second matrix: "))
-         mat2.append(elements)
+            elements = int(input("Enter the values of second matrix: "))
+            mat2.append(elements)
     matrix2.append(mat2)
     #Test if they are rotation for each other
     test=True
+
     if row1*col1 == row2*col2 and row1==col2:
+       
        for i in range(row1) :
             
             for l in range(col2):
           
-             if  matrix1[i][l]==matrix2[l][i]:
+                if  matrix1[i][l]==matrix2[l][i]:
                 
-                  test=True
-             else:
-                 test = False
+                    test=True
+                else:
+                    test = False
     else:
         test = False            
     return test
+
+def InvertDictionary():
+    #creating Dictionary by user
+    value_number = int(input("Enter the number of items in the dictionary: "))
+    user_dict = {}
+
+    for i in range(value_number):
+
+        value = input("Enter value: ")
+    user_dict[i] = value
+
+    print("Before inverting:")
+    print(user_dict)
+    #invertred given Dictionary
+    inverted_dict = {}
+
+    for key, value in user_dict.items():
+      if value in inverted_dict:
+          if isinstance(inverted_dict[value], list):
+              inverted_dict[value].append(key)
+          else:
+              inverted_dict[value] = [inverted_dict[value], key]
+      else:
+          inverted_dict[value] = key
+          
+    print("After inverting:")
+    return inverted_dict
+   
+
+    
+    
 
 def main():
     #Display menu to user
