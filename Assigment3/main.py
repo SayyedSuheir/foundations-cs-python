@@ -145,7 +145,8 @@ def is_palindrome(s):
           return False
 
 # Recursive function to check if a string is a palindrome
-
+def SearchElementMergeSort():
+    pass
 
 def main():
     #Display menu to user
