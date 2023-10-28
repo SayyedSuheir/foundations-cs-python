@@ -123,9 +123,29 @@ def ConvertMatrixToDict():
       user_id = user_data[2]  # ID is at index 2 in the user data list
       user_info = [user_data[0], user_data[1], user_data[3], user_data[4]]  # Extracting first name, last name, job title, and company
       user_dict[user_id] = user_info
-  print(user_dict)
+  
   return user_dict
-    
+
+def CheckPalindrome() :
+    word = input("Enter a string: ")
+    result = is_palindrome(word)
+    if result:
+     return  print(f"The string '{word}' is a palindrome.")
+    else:
+     return print(f"The string '{word}' is not a palindrome.")
+
+def is_palindrome(s):
+  s = s.lower().replace(" ", "")  # Convert to lowercase and remove spaces
+  if len(s) <= 1:
+      return True
+  else:
+      if s[0] == s[-1]:
+          return is_palindrome(s[1:-1])
+      else:
+          return False
+
+# Recursive function to check if a string is a palindrome
+
 
 def main():
     #Display menu to user
