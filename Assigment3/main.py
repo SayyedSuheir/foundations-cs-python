@@ -36,7 +36,44 @@ def SumMatrices(matrix1,matrix2):
         result.append(row)
     return result
 
-
+def CheckRotation():
+    #create first matrix
+    row1= int(input("Enter the number of rows for first matrix M1: "))
+    col1= int(input("Enter the number of cols for first matrix M1: "))
+    
+    matrix1=[]
+    for i in range(row1):
+      mat1=[]
+      for j in range(col1):
+        elements = int(input("Enter the values of first matrix: "))
+        mat1.append(elements)
+    matrix1.append(mat1)
+    #create second matrix
+    row2= int(input("Enter the number of rows for first matrix M2: "))
+    col2= int(input("Enter the number of cols for first matrix M2: "))
+    
+    matrix2=[]
+    for i in range(row2):
+        mat2=[]
+        for j in range(col2):
+         elements = int(input("Enter the values of second matrix: "))
+         mat2.append(elements)
+    matrix2.append(mat2)
+    #Test if they are rotation for each other
+    test=True
+    if row1*col1 == row2*col2 and row1==col2:
+       for i in range(row1) :
+            
+            for l in range(col2):
+          
+             if  matrix1[i][l]==matrix2[l][i]:
+                
+                  test=True
+             else:
+                 test = False
+    else:
+        test = False            
+    return test
 
 def main():
     #Display menu to user
