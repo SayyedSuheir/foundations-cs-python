@@ -8,7 +8,7 @@ def Reverse(s,i):
 def RearrangeUpper(s):
    upper_char=""
    lower_char=""
-   
+   #Big O(N):N is the len of string
    for char in s:
     
      if char.isupper():
@@ -30,6 +30,7 @@ def Reorder(s1,s2):
 def GetMax(list):
   max= list[0]
   max_index=0
+  #Big O(N): N is the len of list
   for i in  range(1,len(list)):
     if list[i]>max:
      max=list[i]
@@ -40,6 +41,7 @@ def GetMax(list):
 def GetMin(list):
   min = list[0]
   min_index = 0
+  #Big O(N): N is the len of list
   for i in range(1,len(list)):
     if min > list[i]:
       min =list[i]
@@ -49,6 +51,7 @@ def GetMin(list):
   print ("The smallest number is {} at position {}".format(min, min_index))
 def SumDigits(number):
   sum = 0
+  #Big O(N): N is the number of digits
   while(number%10 !=0):
     sum = sum + number%10
     number= number//10
@@ -64,7 +67,7 @@ def RemoveDuobledLetters(string):
     return RemoveDuobledLetters(string[1:])
   else:
   # If the first two characters are different, keep the first character and call the function on the rest of the string.
-    return string[0] + RemoveDuobledLetters(string[1:])
+    return string[0] + RemoveDuobledLetters(string[1:])#Big O(N): N is the len of string
 
 
 def ReverseNumber(n,reversed_n=0):
