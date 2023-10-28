@@ -105,7 +105,26 @@ def InvertDictionary():
     return inverted_dict
    
 
-    
+def ConvertMatrixToDict():
+  matrix = []
+  n = int(input("Enter the number of users: "))
+
+  for i in range(n):
+      first_name = input("Enter First Name: ")
+      last_name = input("Enter Last Name: ")
+      user_id = "ID"+str(i)
+      job_title = input("Enter Job Title: ")
+      company = input("Enter Company: ")
+
+      user_data = [first_name, last_name, user_id, job_title, company]
+      matrix.append(user_data)
+  user_dict = {}
+  for user_data in matrix:
+      user_id = user_data[2]  # ID is at index 2 in the user data list
+      user_info = [user_data[0], user_data[1], user_data[3], user_data[4]]  # Extracting first name, last name, job title, and company
+      user_dict[user_id] = user_info
+  print(user_dict)
+  return user_dict
     
 
 def main():
@@ -136,7 +155,7 @@ def main():
             #Let User choose
             user_choice = int(input("Please choose number from 1 to 7: "))
         elif user_choice == 4:
-            print(ConvertMatrixToDictionary())
+            print(ConvertMatrixToDict())
             #Display menu to user
             print("Please choose from menu below:\n1.Add Matrices\n2.Check Rotation\n3.Invert Dictionary\n4.Convert Matrix to Dictionary\n5.Check Palindrome\n6.Search for an Element & Merge Sort\n7.Exit\n")
             #Let User choose
