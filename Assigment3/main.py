@@ -146,28 +146,67 @@ def is_palindrome(s):
 
 # Recursive function to check if a string is a palindrome
 def SearchElementMergeSort():
-    #Ask user to create list
-        user_list = []
-        number_values = int(input("Enter the number of values: "))
-        for i in range(number_values):#bigO(N):N is the number of values entered by user
-         elements = int(input("Enter values of list elements: "))
-         user_list.append(elements)
+        #Ask user to create list
+    user_list = []
+    number_values = int(input("Enter the number of values: "))
+    for i in range(number_values):#bigO(N):N is the number of values entered by user
+        elements = int(input("Enter values of list elements: "))
+        user_list.append(elements)
 
-        print(user_list)
+    print(user_list)
 
-        #search for element will use linear search
-        searched_value=int(input("Enter number to search for: "))
-        index = -1
-        ind_lst=[]
-        for i in range(number_values):
-            if user_list[i] == searched_value:
-                index = i
-                ind_lst.append(index)
-            if len(ind_lst) !=0:    
-                return f"{searched_value} is at index {ind_lst}"
-            else:  
-                return f"This number {searched_value} does not exits"
+    #search for element will use linear search
+    searched_value=int(input("Enter number to search for: "))
+    index = -1
+    ind_lst=[]
+    for i in range(number_values):
+        if user_list[i] == searched_value:
+            index = i
+            ind_lst.append(index)
+    if len(ind_lst) >=1:    
+        print(f"{searched_value} is at index {ind_lst}")
+    else:  
+        print(f"This number {searched_value} does not exits")
+        
+    #Sort using MergeSort
+    return "unsorted list is: ",user_list,"\nSorted list is : ",MergeSort(user_list)
+                                                    
     
+def MergeSort(lst):
+  #divid list to single elements
+  #BigO(lgN):N is the len of list
+    if len(lst) > 1:
+        mid = len(lst) // 2
+        left_list = lst[:mid]
+        right_list = lst[mid:]
+        
+        MergeSort(left_list)
+        MergeSort(right_list)
+        #conquer element in sorted way
+        i = j = k = 0
+        
+        while i < len(left_list) and j < len(right_list):
+            if left_list[i] < right_list[j]:
+                lst[k] = left_list[i]
+              
+                i += 1
+            else:
+                lst[k] = right_list[j]
+                j += 1
+                
+            k += 1
+
+        while i < len(left_list):
+            lst[k] = left_list[i]
+            i += 1
+            k += 1
+            
+        while j < len(right_list):
+            lst[k] = right_list[j]
+            j += 1
+            k += 1
+
+    return lst
 
 def main():
     #Display menu to user
