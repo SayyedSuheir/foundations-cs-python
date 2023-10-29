@@ -10,8 +10,8 @@ def AddMatrices():
     matrix2=InputMatrixElemtens(row,col)
     result = SumMatrices(matrix1, matrix2)
     print("The sum of the two matrices is:")
-    for row in result:
-     print(row)
+    #for row in result:
+    return  result
 
 def InputMatrixElemtens(rows,col):
     #create empty matrix
@@ -33,7 +33,7 @@ def SumMatrices(matrix1,matrix2):
         row = []
         for j in range(len(matrix1[0])):
             row.append(matrix1[i][j] + matrix2[i][j])
-        result.append(row)
+            result.append(row)
     return result
 
 def CheckRotation():
@@ -60,21 +60,13 @@ def CheckRotation():
             mat2.append(elements)
     matrix2.append(mat2)
     #Test if they are rotation for each other
-    test=True
-
-    if row1*col1 == row2*col2 and row1==col2:
-       
-       for i in range(row1) :
-            
-            for l in range(col2):
-          
-                if  matrix1[i][l]==matrix2[l][i]:
-                
-                    test=True
-                else:
-                    test = False
+    test=bool
+    if row1*col1 == row2*col2 and row1 == col2:
+        for i in range(row1):
+         for j in range(col2):
+             test = matrix1[i][j] == matrix2[j][i]
     else:
-        test = False            
+         test = False
     return test
 
 def InvertDictionary():
