@@ -146,7 +146,28 @@ def is_palindrome(s):
 
 # Recursive function to check if a string is a palindrome
 def SearchElementMergeSort():
-    pass
+    #Ask user to create list
+        user_list = []
+        number_values = int(input("Enter the number of values: "))
+        for i in range(number_values):#bigO(N):N is the number of values entered by user
+         elements = int(input("Enter values of list elements: "))
+         user_list.append(elements)
+
+        print(user_list)
+
+        #search for element will use linear search
+        searched_value=int(input("Enter number to search for: "))
+        index = -1
+        ind_lst=[]
+        for i in range(number_values):
+            if user_list[i] == searched_value:
+                index = i
+                ind_lst.append(index)
+            if len(ind_lst) !=0:    
+                return f"{searched_value} is at index {ind_lst}"
+            else:  
+                return f"This number {searched_value} does not exits"
+    
 
 def main():
     #Display menu to user
