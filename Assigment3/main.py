@@ -33,7 +33,7 @@ def SumMatrices(matrix1,matrix2):
         row = []
         for j in range(len(matrix1[0])):
             row.append(matrix1[i][j] + matrix2[i][j])
-            result.append(row)
+        result.append(row)
     return result
 
 def CheckRotation():
@@ -61,10 +61,10 @@ def CheckRotation():
     matrix2.append(mat2)
     #Test if they are rotation for each other
     test=bool
-    if row1*col1 == row2*col2 and row1 == col2:
+    if row1*col1 == row2*col2 and row1 == col2 and row2 == col1:
         for i in range(row1):
-         for j in range(col2):
-             test = matrix1[i][j] == matrix2[j][i]
+            for j in range(col2):
+                test = matrix1[i][j] == matrix2[j][i]
     else:
          test = False
     return test
@@ -77,7 +77,7 @@ def InvertDictionary():
     for i in range(value_number):
 
         value = input("Enter value: ")
-    user_dict[i] = value
+        user_dict[i] = value
 
     print("Before inverting:")
     print(user_dict)
