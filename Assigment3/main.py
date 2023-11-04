@@ -84,7 +84,7 @@ def InvertDictionary():
     #invertred given Dictionary
     inverted_dict = {}
 
-    for key, value in user_dict.items():
+    for key, value in user_dict.items():#bigO(N):N is the len of dic
       if value in inverted_dict:
           if isinstance(inverted_dict[value], list):
               inverted_dict[value].append(key)
@@ -117,7 +117,7 @@ def ConvertMatrixToDict():
       user_dict[user_id] = user_info
   
   return user_dict
-
+#BigO(N):N is the len of string
 def CheckPalindrome() :
     word = input("Enter a string: ")
     result = is_palindrome(word)
@@ -125,7 +125,7 @@ def CheckPalindrome() :
      return  print(f"The string '{word}' is a palindrome.")
     else:
      return print(f"The string '{word}' is not a palindrome.")
-
+# Recursive function to check if a string is a palindrome
 def is_palindrome(s):
   s = s.lower().replace(" ", "")  # Convert to lowercase and remove spaces
   if len(s) <= 1:
@@ -136,7 +136,7 @@ def is_palindrome(s):
       else:
           return False
 
-# Recursive function to check if a string is a palindrome
+
 def SearchElementMergeSort():
         #Ask user to create list
     user_list = []
@@ -161,7 +161,7 @@ def SearchElementMergeSort():
         print(f"This number {searched_value} does not exits")
         
     #Sort using MergeSort
-    return "unsorted list is: ",user_list,"\nSorted list is : ",MergeSort(user_list)
+    return print("unsorted list is: ",user_list," \nSorted list is : ",MergeSort(user_list))
                                                     
     
 def MergeSort(lst):
