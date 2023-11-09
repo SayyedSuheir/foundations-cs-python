@@ -1,4 +1,21 @@
-#create function to display greet user and display the menu
+#empty global tabs list
+tabs=[]
+#Open tab function to add tab
+def OpenTab(tabs):
+#Ask user to enter the title of tab
+    title_tab = input("Enter the title of tab: ")
+#Ask user to enter the URL of tab
+    url_tab = input("Enter the URL: ")
+#Save user inputs in dictionary
+    tab_open={'title':title_tab,'URL':url_tab}
+#add the dictionary to list
+    tabs.append(tab_open)
+    print("A new tab added sucessfully")
+
+def CloseTab():
+    pass
+
+#Create function to greet user and display the menu
 def ShowMenu():
    #greeting statment
     print("Welcome to our program")
@@ -11,7 +28,7 @@ def ShowMenu():
         print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
         user_choice = int(input("Choose number from the menu above (1-9): "))
     if user_choice==1:
-            OpenTab()
+            OpenTab(tabs)
     elif user_choice==2:
             CloseTab()
     elif user_choice==3:
