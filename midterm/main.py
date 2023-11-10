@@ -14,18 +14,25 @@ def OpenTab(tabs):
 
 def CloseTab(tabs,i):
     #make sure if there is opened tabs
-    #if not tabs:
-       # print("there is no tab is open")
-       # return
-    if i is None:
+    if not tabs:
+        print("there is no tab is open")
+        return
+    
+    if i =="":
         close_tab = tabs.pop()
         print("last tab has been closed...")
-    elif i >=1 or i < len(tabs):
+   
+       
+    elif i.isdigit() :
+        i = int(i)  
+        if i >=1 or i<len(tabs):
         #close tab at specific index (i-1 since the index of lists counts from 0)
-        close_tab = tabs.pop(i-1)
-        print("The tab at index {} is closed".format(close_tab))
+           close_tab = tabs.pop(i-1)
+           print("The tab at index {} is closed".format(close_tab))
+        else:
+            print("Invaild index no tab is closed...")
     else:
-        print("Invaild index no tab is closed...")
+        print("Invalid index it must be number or empty...")
 
 #Create function to greet user and display the menu
 def ShowMenu():
@@ -46,7 +53,7 @@ def ShowMenu():
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==2:
-               user_index=int(input("Enter the index of tab that you want to close or leave it empty to close the last opened tab: "))
+               user_index=input("Enter the index of tab that you want to close or leave it empty to close the last opened tab: ")
                CloseTab(tabs,user_index)
                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                user_choice = int(input("Choose number from the menu above (1-9): "))
