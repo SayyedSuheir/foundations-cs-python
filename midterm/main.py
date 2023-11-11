@@ -83,13 +83,14 @@ def ClearAllTabs(tabs):
       print("All tabs are cleared....")                  
 
 def SaveTabs(tabs):
-        #create json file(https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/)
+        #create json file (https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/)
         with open('tabs.json','w') as file:
             json.dump(tabs,file)  
         print("JSON file created successfully...")      
 def  ImpotTabs():
+      #open json file (https://www.geeksforgeeks.org/read-json-file-using-python/)
       with open('tabs.json') as file:
-
+      #import json file data
         print( json.load(file))         
 
 #Create function to greet user and display the menu
