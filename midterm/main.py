@@ -94,7 +94,7 @@ def  ImpotTabs():
         print( json.load(file))         
 
 #Create function to greet user and display the menu
-def ShowMenu():
+def main():
     
    #greeting statment
     print("Welcome to our program")
@@ -147,8 +147,6 @@ def ShowMenu():
         
     
     
-def main():
-  #call function show menu 
-  ShowMenu()
+
   
 main()
