@@ -29,6 +29,7 @@ def OpenTab():
              print("Please eneter a numbers only")
 
 def CloseTab():
+#BigO(N): N is the number of index entered by user (worst case deleting last tab in dict)
     user_index=input("Enter the index of tab that you want to close or 'leave it empty to close the last opened tab': ")
     if user_index =="":
         close_tab=tabs.pop(len(tabs))
