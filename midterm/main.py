@@ -84,10 +84,13 @@ def ClearAllTabs(tabs):
 
 def SaveTabs(tabs):
         #create json file(https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/)
-        with open('sample.json','w') as file:
+        with open('tabs.json','w') as file:
             json.dump(tabs,file)  
         print("JSON file created successfully...")      
-             
+def  ImpotTabs():
+      with open('tabs.json') as file:
+
+        print( json.load(file))         
 
 #Create function to greet user and display the menu
 def ShowMenu():
