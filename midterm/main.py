@@ -62,22 +62,20 @@ def DisplayAllTabs():
         print(tabs[key].get('title'),tabs[key].get('nest_tabs'))
             
 def OpenNestedTab(tabs):
-      pass
-      #Ask user to enter the index of tab 
-      #user_index = int(input("Enter the index of tab to be nested : "))
-      #Ask user to enter title for nested tab
-      #nested_title = input("Enter title for nested tab: ")
-      #Ask user to enter content for nested tab
-      #nested_content = input("Enter content of nested tab: ")
-      #for key in tabs:
-           # if user_index == key:
-              #  add_nest = tabs[key].get('nest_tabs')
-              #  add_nest = {'nest_title':nested_title,'nest_content':nested_content}
-     # tabs[user_index] = tabs.update({'nest_tabs':add_nest})
-     # print(tabs)
+      
+        #Ask user to enter the index of tab 
+        user_index = int(input("Enter the index of tab to be nested : "))
+        #Ask user to enter title for nested tab
+        nested_title = input("Enter title for nested tab: ")
+        #Ask user to enter content for nested tab
+        nested_content = input("Enter content of nested tab: ")
+        for key in tabs:
+                if user_index == key:
+                    tabs[user_index]['nest_tabs']= {'nested_title':nested_title,'nested_content':nested_content}
+        print(tabs)
 
 def ClearAllTabs(tabs):
-      #clear method of dictionary to remove all elements of dictionary (w3schools)
+      #clear method of dictionary to remove all elements of dictionary (w3schools.com)
       tabs.clear()
       print("All tabs are cleared....")                  
                   
