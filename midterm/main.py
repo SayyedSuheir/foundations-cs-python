@@ -101,51 +101,57 @@ def main():
    #Display the menu
     print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
     #Ask user to choose from menu 
-    user_choice = int(input("Choose number from the menu above (1-9): "))
-    while user_choice > 9 or user_choice <= 0:
-        print(user_choice," is Invaild number please choose number from menu (1 to 9) ")
-        print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-        user_choice = int(input("Choose number from the menu above (1-9): "))
-    while user_choice !=9:
-       
-        if user_choice==1:
-                tabs = OpenTab()
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+    while True:
+            try:
                 user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==2:
-               
-               CloseTab()
-               print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-               user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==3:
-                SwitchTab(tabs)
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==4:
-                DisplayAllTabs()
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==5:
-                OpenNestedTab(tabs)
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==6:
-                ClearAllTabs(tabs)
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==7:
-                SaveTabs(tabs)
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                user_choice = int(input("Choose number from the menu above (1-9): "))
-        elif user_choice==8:
-                ImpotTabs()
-                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                user_choice = int(input("Choose number from the menu above (1-9): "))
-    if  user_choice==9:
-               print("You have exit the menu...")
-    
-        
-    
+                          
+                
+                while user_choice > 9 or user_choice <= 0:
+                     print(user_choice," is Invaild number please choose number from menu (1 to 9) ")
+                     print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                     user_choice = int(input("Choose number from the menu above (1-9): "))
+                while user_choice !=9:
+            
+                    if user_choice==1:
+                            tabs = OpenTab()
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==2:
+                        
+                        CloseTab()
+                        print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                        user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==3:
+                            SwitchTab(tabs)
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==4:
+                            DisplayAllTabs()
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==5:
+                            OpenNestedTab(tabs)
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==6:
+                            ClearAllTabs(tabs)
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==7:
+                            SaveTabs(tabs)
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                    elif user_choice==8:
+                            ImpotTabs()
+                            print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                            user_choice = int(input("Choose number from the menu above (1-9): "))
+                if  user_choice==9:
+                        print("You have exit the menu...")  
+                        break 
+            except ValueError:
+                  print("please enter number not letter") 
+            
+                        
     
 
   
