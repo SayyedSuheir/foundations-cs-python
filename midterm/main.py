@@ -8,7 +8,7 @@ import requests
 tabs={}
 #Open tab function to add tab
 def OpenTab():
-
+#Big O(N): Is the number of items entered by user
     while True:
         try:    
          number_tabs = int(input("how many tab do you want to add: "))
