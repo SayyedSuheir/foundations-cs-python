@@ -53,6 +53,11 @@ def GetHTMLContent(tabs_url):
 def SwitchTab(tabs):
     #Ask user to enter index of tab
     user_index = input("Enter tab index to switch:")
+    if user_index.isalpha():
+         while True:
+             print("please enter a number or leave it empty..")
+             user_index = input("Enter tab index to switch:")
+             break
     #if index is empty get the url of last tab
     if user_index == "":
           # Get url of last tab
