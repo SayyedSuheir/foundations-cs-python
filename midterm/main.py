@@ -43,7 +43,7 @@ def CloseTab():
     
 
 def GetHTMLContent(tabs_url):
-    #request html content from online website
+    #request html content from online website(https://www.youtube.com/watch?v=XVv6mJpFOb0)
     html_file = requests.get(tabs_url).text
     #used to search tags inside webpage(li , h1,h5,p ,a....)
     #create instance of beauitfulsoup
