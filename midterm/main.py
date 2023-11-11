@@ -1,41 +1,54 @@
-#empty global tabs list
-tabs=[]
+#import Beautifulsoup library
+from bs4 import BeautifulSoup
+#import requests library used to request info from real websites
+import requests
+#create empty dictionary
+tabs={}
 #Open tab function to add tab
-def OpenTab(tabs):
-#Ask user to enter the title of tab
-    title_tab = input("Enter the title of tab: ")
-#Ask user to enter the URL of tab
-    url_tab = input("Enter the URL: ")
-#Save user inputs in dictionary
-    tab_open={'title':title_tab,'URL':url_tab}
-#add the dictionary to list
-    tabs.append(tab_open)
-    print("A new tab added sucessfully")
+def OpenTab():
 
-def CloseTab(tabs,i):
-    #make sure if there is opened tabs
-    if not tabs:
-        print("there is no tab is open")
-        return
+        tabs={}
+        number_tabs = int(input("how many tab do you want to add: "))
+        for i in range (number_tabs):
+        #Ask user to enter the title of tab
+            title_tab = input("Enter the title of tab: ")
+        #Ask user to enter the URL of tab
+            url_tab = input("Enter the URL: ")
+        #Create tabs key
+            tab_id = len(tabs)+1
+        #Save user inputs in dictionary
+            tabs[tab_id]={'title':title_tab,'URL':url_tab,'nest_tabs':{}}
+        print(tabs)
+       # print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(tab_id,title_tab,url_tab))
+        return tabs
+
+def CloseTab():
+    user_index=input("Enter the index of tab that you want to close or 'leave it empty to close the last opened tab': ")
+    if user_index =="":
+        close_tab=tabs.pop(len(tabs))
+        print("Last tab was colsed...")
     
-    if i =="":
-        close_tab = tabs.pop()
-        print("last tab has been closed...")
-   
-       
-    elif i.isdigit() :
-        i = int(i)  
-        if i >=1 or i<len(tabs):
-        #close tab at specific index (i-1 since the index of lists counts from 0)
-           close_tab = tabs.pop(i-1)
-           print("The tab at index {} is closed".format(close_tab))
-        else:
-            print("Invaild index no tab is closed...")
-    else:
-        print("Invalid index it must be number or empty...")
+    
+    
+
+def GetHTMLContent(tabs_url):
+    #request html content from real website
+    html_file = requests.get(tabs_url).text
+    #used to search tags inside webpage(li , h1,h5,p ,a....)
+    #create instance of beauitfulsoup
+    soup = BeautifulSoup(html_file,'lxml')
+    jobs = soup.find_all('li')
+
+def SwitchTab(tabs):
+    tabs_url=[]
+    tabs_dict = tabs[0]
+    print(tabs_url.append(tabs_dict.get('url')))
+    
+   # GetHTMLContent(tabs_url)
 
 #Create function to greet user and display the menu
 def ShowMenu():
+    tabs={}
    #greeting statment
     print("Welcome to our program")
    #Display the menu
@@ -49,12 +62,12 @@ def ShowMenu():
     while user_choice !=9:
        
         if user_choice==1:
-                OpenTab(tabs)
+                tabs = OpenTab()
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==2:
-               user_index=input("Enter the index of tab that you want to close or leave it empty to close the last opened tab: ")
-               CloseTab(tabs,user_index)
+               
+               CloseTab()
                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==3:
