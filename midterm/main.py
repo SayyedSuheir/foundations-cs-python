@@ -7,7 +7,7 @@ tabs={}
 #Open tab function to add tab
 def OpenTab():
 
-        tabs={}
+        
         number_tabs = int(input("how many tab do you want to add: "))
         for i in range (number_tabs):
         #Ask user to enter the title of tab
@@ -18,8 +18,8 @@ def OpenTab():
             tab_id = len(tabs)+1
         #Save user inputs in dictionary
             tabs[tab_id]={'title':title_tab,'URL':url_tab,'nest_tabs':{}}
-        print(tabs)
-       # print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(tab_id,title_tab,url_tab))
+        
+        print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(tab_id,title_tab,url_tab))
         return tabs
 
 def CloseTab():
@@ -27,6 +27,10 @@ def CloseTab():
     if user_index =="":
         close_tab=tabs.pop(len(tabs))
         print("Last tab was colsed...")
+    for key in tabs:
+          if user_index == key :
+            close_tab = tabs.pop(int(user_index))
+    print( f"The tab with title {tabs[int(user_index)].get('title')} and url {tabs[int(user_index)].get('URL')} is closed..")
     
     
     
