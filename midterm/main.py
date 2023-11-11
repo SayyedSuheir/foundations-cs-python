@@ -1,3 +1,5 @@
+#import JSON library
+import json
 #import Beautifulsoup library
 from bs4 import BeautifulSoup
 #import requests library used to request info from real websites
@@ -69,6 +71,7 @@ def OpenNestedTab(tabs):
         nested_title = input("Enter title for nested tab: ")
         #Ask user to enter content for nested tab
         nested_content = input("Enter content of nested tab: ")
+        #insert nested tab 
         for key in tabs:
                 if user_index == key:
                     tabs[user_index]['nest_tabs']= {'nested_title':nested_title,'nested_content':nested_content}
@@ -78,7 +81,10 @@ def ClearAllTabs(tabs):
       #clear method of dictionary to remove all elements of dictionary (w3schools.com)
       tabs.clear()
       print("All tabs are cleared....")                  
-                  
+
+def SaveTabs(tabs):
+      with open('sample.json','w') as file:
+            json.dump(tabs,file)             
 
 #Create function to greet user and display the menu
 def ShowMenu():
@@ -121,7 +127,7 @@ def ShowMenu():
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==7:
-                SaveTabs()
+                SaveTabs(tabs)
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==8:
