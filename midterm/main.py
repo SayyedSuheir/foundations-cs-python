@@ -14,12 +14,13 @@ def OpenTab():
             title_tab = input("Enter the title of tab: ")
         #Ask user to enter the URL of tab
             url_tab = input("Enter the URL: ")
+            http_url_tab = 'http://' + url_tab
         #Create tabs key
             tab_id = len(tabs)+1
         #Save user inputs in dictionary
-            tabs[tab_id]={'title':title_tab,'URL':url_tab,'nest_tabs':{}}
+            tabs[tab_id]={'title':title_tab,'URL':http_url_tab,'nest_tabs':{}}
         
-        print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(tab_id,title_tab,url_tab))
+        print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(tab_id,title_tab,http_url_tab))
         return tabs
 
 def CloseTab():
@@ -41,14 +42,22 @@ def GetHTMLContent(tabs_url):
     #used to search tags inside webpage(li , h1,h5,p ,a....)
     #create instance of beauitfulsoup
     soup = BeautifulSoup(html_file,'lxml')
-    jobs = soup.find_all('li')
+    
+    print(soup)
 
 def SwitchTab(tabs):
-    tabs_url=[]
-    tabs_dict = tabs[0]
-    print(tabs_url.append(tabs_dict.get('url')))
+    #Ask user to enter index of tab
+    user_index = input("Enter tab index to switch:")
+    #if index is empty get the url of last tab
+    if user_index == "":
+          # Get url of last tab
+          tabs_url = tabs[len(tabs)].get('URL')
+          GetHTMLContent(tabs_url)
+    else: #Get url of given tab index by user   
+        tabs_url = tabs[int(user_index)].get('URL')
+        GetHTMLContent(tabs_url)
     
-   # GetHTMLContent(tabs_url)
+
 
 #Create function to greet user and display the menu
 def ShowMenu():
@@ -75,7 +84,7 @@ def ShowMenu():
                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==3:
-                SwitchTab()
+                SwitchTab(tabs)
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==4:
