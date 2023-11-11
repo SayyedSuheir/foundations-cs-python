@@ -63,9 +63,12 @@ def SwitchTab(tabs):
           # Get url of last tab
           tabs_url = tabs[len(tabs)].get('URL')
           GetHTMLContent(tabs_url)
-    else: #Get url of given tab index by user   
+    elif int(user_index) <= len(tabs):
+        #Get url of given tab index by user   
         tabs_url = tabs[int(user_index)].get('URL')
         GetHTMLContent(tabs_url)
+    else:
+         print("No tab found..")
     
 def DisplayAllTabs():
       for key in tabs:
