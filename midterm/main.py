@@ -59,8 +59,28 @@ def SwitchTab(tabs):
     
 def DisplayAllTabs():
       for key in tabs:
-        print(tabs[key].get('title'),tabs[key].get('nest_tabs'))  
+        print(tabs[key].get('title'),tabs[key].get('nest_tabs'))
             
+def OpenNestedTab(tabs):
+      pass
+      #Ask user to enter the index of tab 
+      #user_index = int(input("Enter the index of tab to be nested : "))
+      #Ask user to enter title for nested tab
+      #nested_title = input("Enter title for nested tab: ")
+      #Ask user to enter content for nested tab
+      #nested_content = input("Enter content of nested tab: ")
+      #for key in tabs:
+           # if user_index == key:
+              #  add_nest = tabs[key].get('nest_tabs')
+              #  add_nest = {'nest_title':nested_title,'nest_content':nested_content}
+     # tabs[user_index] = tabs.update({'nest_tabs':add_nest})
+     # print(tabs)
+
+def ClearAllTabs(tabs):
+      #clear method of dictionary to remove all elements of dictionary (w3schools)
+      tabs.clear()
+      print("All tabs are cleared....")                  
+                  
 
 #Create function to greet user and display the menu
 def ShowMenu():
@@ -95,11 +115,11 @@ def ShowMenu():
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==5:
-                OpenNestedTab()
+                OpenNestedTab(tabs)
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==6:
-                ClearAllTabs()
+                ClearAllTabs(tabs)
                 print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                 user_choice = int(input("Choose number from the menu above (1-9): "))
         elif user_choice==7:
