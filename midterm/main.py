@@ -9,9 +9,10 @@ tabs={}
 #Open tab function to add tab
 def OpenTab():
 
-        
-        number_tabs = int(input("how many tab do you want to add: "))
-        for i in range (number_tabs):
+    while True:
+        try:    
+         number_tabs = int(input("how many tab do you want to add: "))
+         for i in range (number_tabs):
         #Ask user to enter the title of tab
             title_tab = input("Enter the title of tab: ")
         #Ask user to enter the URL of tab
@@ -21,9 +22,11 @@ def OpenTab():
             tab_id = len(tabs)+1
         #Save user inputs in dictionary
             tabs[tab_id]={'title':title_tab,'URL':http_url_tab,'nest_tabs':{}}
-        for key ,value in tabs.items():
+         for key ,value in tabs.items():
             print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(key,tabs[key].get('title'),tabs[key].get('URL')))
-        return tabs
+         return tabs
+        except ValueError:
+             print("Please eneter a numbers only")
 
 def CloseTab():
     user_index=input("Enter the index of tab that you want to close or 'leave it empty to close the last opened tab': ")
