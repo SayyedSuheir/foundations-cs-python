@@ -19,8 +19,8 @@ def OpenTab():
             tab_id = len(tabs)+1
         #Save user inputs in dictionary
             tabs[tab_id]={'title':title_tab,'URL':http_url_tab,'nest_tabs':{}}
-        
-        print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(tab_id,title_tab,http_url_tab))
+        for key ,value in tabs.items():
+            print("A new tab with tab ID {} : title-{} and  url-{} are added sucessfully".format(key,tabs[key].get('title'),tabs[key].get('URL')))
         return tabs
 
 def CloseTab():
@@ -37,7 +37,7 @@ def CloseTab():
     
 
 def GetHTMLContent(tabs_url):
-    #request html content from real website
+    #request html content from online website
     html_file = requests.get(tabs_url).text
     #used to search tags inside webpage(li , h1,h5,p ,a....)
     #create instance of beauitfulsoup
@@ -57,11 +57,14 @@ def SwitchTab(tabs):
         tabs_url = tabs[int(user_index)].get('URL')
         GetHTMLContent(tabs_url)
     
-
+def DisplayAllTabs():
+      for key in tabs:
+        print(tabs[key].get('title'),tabs[key].get('nest_tabs'))  
+            
 
 #Create function to greet user and display the menu
 def ShowMenu():
-    tabs={}
+    
    #greeting statment
     print("Welcome to our program")
    #Display the menu
