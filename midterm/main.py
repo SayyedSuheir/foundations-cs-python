@@ -51,7 +51,7 @@ def GetHTMLContent(tabs_url):
     
     print(soup)
 
-def SwitchTab(tabs):
+def SwitchTab(tabs):#BigO(N):N is index entered by user (last item in dictionary)
     #Ask user to enter index of tab
     user_index = input("Enter tab index to switch:")
     if user_index.isalpha():
