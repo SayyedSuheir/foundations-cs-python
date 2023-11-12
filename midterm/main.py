@@ -99,7 +99,7 @@ def SaveTabs(tabs):#BigO(N):N is the length of dumped dictionary
         with open('tabs.json','w') as file:
             json.dump(tabs,file)  
         print("JSON file created successfully...")      
-def  ImpotTabs():
+def  ImpotTabs():#BigO(N): N is the lenght of loaded dictionary
       #open json file (https://www.geeksforgeeks.org/read-json-file-using-python/)
       with open('tabs.json') as file:
       #import json file data
