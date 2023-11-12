@@ -73,14 +73,11 @@ def SwitchTab():#BigO(N):N is index entered by user (last item in dictionary)
          print("No tab found..")
     
 def DisplayAllTabs():#BigO(N):N is the lenght of dictionary
-      if len(tabs)==0:
-           print("You have to open tabs first..")
-      else:
+    if len(tabs)==0:
+           print("No tabs to display...")
+    else:
         for key in tabs:
-            if tabs[key].get('nest_tabs') =='{}':
-                print(tabs[key].get('title'),"\n",tabs[key].get('nest_tabs'))
-            else:
-                print(tabs[key].get('title'),"\n No nested tabs found") 
+           print(tabs[key].get('title'),"\n nested tabs  {}".format(tabs[key].get('nest_tabs')))
             
 def OpenNestedTab():#BigO(N):N is last index in dictionary(len of dictionary)
       
