@@ -94,7 +94,7 @@ def ClearAllTabs(tabs):#BigO(N):N is the len of dictionary
       tabs.clear()
       print("All tabs are cleared....")                  
 
-def SaveTabs(tabs):
+def SaveTabs(tabs):#BigO(N):N is the length of dumped dictionary
         #create json file (https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/)
         with open('tabs.json','w') as file:
             json.dump(tabs,file)  
