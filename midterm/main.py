@@ -30,15 +30,21 @@ def OpenTab():
 
 def CloseTab():
 #BigO(N): N is the number of index entered by user (worst case deleting last tab in dict)
-    user_index=input("Enter the index of tab that you want to close or 'leave it empty to close the last opened tab': ")
-    if user_index =="":
-        close_tab=tabs.pop(len(tabs))
-        print("{} Last tab was colsed...".format(close_tab))
-    else:
-     for key in tabs:
-          if user_index == key :
-            close_tab = tabs.pop(int(user_index))
-    print( f"The tab with title {tabs[int(user_index)].get('title')} and url {tabs[int(user_index)].get('URL')} is closed..")
+    
+    
+        user_index=input("Enter the index of tab that you want to close or 'leave it empty to close the last opened tab': ")
+        if user_index.isalpha():
+              print("please enter number or leave it empty")
+        elif user_index =="":
+             close_tab=tabs.pop(len(tabs))
+             print("{} Last tab was colsed...".format(close_tab))
+        else:
+            for key in tabs:
+              if user_index == key :
+                close_tab = tabs.pop(int(user_index))
+                print( f"The tab with title {tabs[int(user_index)].get('title')} and url {tabs[int(user_index)].get('URL')} is closed..")
+              else:
+                   print("No tab found")
     
     
     

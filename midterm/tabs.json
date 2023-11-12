@@ -1,1 +1,1 @@
-{"1": {"title": "google", "URL": "http://google.com", "nest_tabs": {"nested_title": "google-page2", "nested_content": "page2-crimes"}}, "2": {"title": "yahoo", "URL": "http://yahoo.com", "nest_tabs": {"nested_title": "yahoo-news", "nested_content": "yahoo-fake-news"}}}
+{"1": {"title": "google", "URL": "http://google.com", "nest_tabs": {"nested_title": "google-nested", "nested_content": "nested-page2"}}}
