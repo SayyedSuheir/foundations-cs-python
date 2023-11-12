@@ -33,8 +33,9 @@ def CloseTab():
     user_index=input("Enter the index of tab that you want to close or 'leave it empty to close the last opened tab': ")
     if user_index =="":
         close_tab=tabs.pop(len(tabs))
-        print("Last tab was colsed...")
-    for key in tabs:
+        print("{} Last tab was colsed...".format(close_tab))
+    else:
+     for key in tabs:
           if user_index == key :
             close_tab = tabs.pop(int(user_index))
     print( f"The tab with title {tabs[int(user_index)].get('title')} and url {tabs[int(user_index)].get('URL')} is closed..")
@@ -51,7 +52,7 @@ def GetHTMLContent(tabs_url):
     
     print(soup)
 
-def SwitchTab(tabs):#BigO(N):N is index entered by user (last item in dictionary)
+def SwitchTab():#BigO(N):N is index entered by user (last item in dictionary)
     #Ask user to enter index of tab
     user_index = input("Enter tab index to switch:")
     if user_index.isalpha():
@@ -81,7 +82,7 @@ def DisplayAllTabs():#BigO(N):N is the lenght of dictionary
             else:
                 print(tabs[key].get('title'),"\n No nested tabs found") 
             
-def OpenNestedTab(tabs):#BigO(N):N is last index in dictionary(len of dictionary)
+def OpenNestedTab():#BigO(N):N is last index in dictionary(len of dictionary)
       
         #Ask user to enter the index of tab 
         user_index = int(input("Enter the index of tab to be nested : "))
@@ -95,12 +96,12 @@ def OpenNestedTab(tabs):#BigO(N):N is last index in dictionary(len of dictionary
                     tabs[user_index]['nest_tabs']= {'nested_title':nested_title,'nested_content':nested_content}
         print("The nested title {} with nested content {} created successfully..".format(tabs[user_index]['nest_tabs'].get('nested_title'),tabs[user_index]['nest_tabs'].get('nested_content')))
 
-def ClearAllTabs(tabs):#BigO(N):N is the len of dictionary
+def ClearAllTabs():#BigO(N):N is the len of dictionary
       #clear method of dictionary to remove all elements of dictionary (w3schools.com)
       tabs.clear()
       print("All tabs are cleared....")                  
 
-def SaveTabs(tabs):#BigO(N):N is the length of dumped dictionary
+def SaveTabs():#BigO(N):N is the length of dumped dictionary
         #create json file (https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/)
         with open('tabs.json','w') as file:
             json.dump(tabs,file)  
@@ -116,11 +117,12 @@ def main():#BigO(1):constant
     
    #greeting statment
     print("Welcome to our program")
-   #Display the menu
-    print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-    #Ask user to choose from menu 
+   
     while True:
             try:
+                #Display Menu
+                print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                #Ask user to choose from menu
                 user_choice = int(input("Choose number from the menu above (1-9): "))
                           
                 
@@ -136,11 +138,11 @@ def main():#BigO(1):constant
                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==2:
                         
-                        CloseTab()
-                        print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
-                        user_choice = int(input("Choose number from the menu above (1-9): "))
+                             CloseTab()
+                             print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==3:
-                            SwitchTab(tabs)
+                            SwitchTab()
                             print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==4:
@@ -148,15 +150,15 @@ def main():#BigO(1):constant
                             print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==5:
-                            OpenNestedTab(tabs)
+                            OpenNestedTab()
                             print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==6:
-                            ClearAllTabs(tabs)
+                            ClearAllTabs()
                             print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==7:
-                            SaveTabs(tabs)
+                            SaveTabs()
                             print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Clear All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
                             user_choice = int(input("Choose number from the menu above (1-9): "))
                     elif user_choice==8:
@@ -167,8 +169,8 @@ def main():#BigO(1):constant
                         print("You have exit the menu...")  
                         break 
             except ValueError:
-                  print("please enter number not letter") 
-            
+                        print("please enter number not letter") 
+                       
                         
     
 
