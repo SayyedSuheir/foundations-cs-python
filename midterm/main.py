@@ -89,7 +89,7 @@ def OpenNestedTab(tabs):#BigO(N):N is last index in dictionary(len of dictionary
                     tabs[user_index]['nest_tabs']= {'nested_title':nested_title,'nested_content':nested_content}
         print(tabs)
 
-def ClearAllTabs(tabs):
+def ClearAllTabs(tabs):#BigO(N):N is the len of dictionary
       #clear method of dictionary to remove all elements of dictionary (w3schools.com)
       tabs.clear()
       print("All tabs are cleared....")                  
