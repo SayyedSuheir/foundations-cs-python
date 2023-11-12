@@ -87,7 +87,7 @@ def OpenNestedTab(tabs):#BigO(N):N is last index in dictionary(len of dictionary
         for key in tabs:
                 if user_index == key:
                     tabs[user_index]['nest_tabs']= {'nested_title':nested_title,'nested_content':nested_content}
-        print(tabs)
+        print("The nested title {} with nested content {} created successfully..".format(tabs[user_index]['nest_tabs'].get('nested_title'),tabs[user_index]['nest_tabs'].get('nested_content')))
 
 def ClearAllTabs(tabs):#BigO(N):N is the len of dictionary
       #clear method of dictionary to remove all elements of dictionary (w3schools.com)
