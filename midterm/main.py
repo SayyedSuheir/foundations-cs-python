@@ -106,7 +106,7 @@ def  ImpotTabs():#BigO(N): N is the lenght of loaded dictionary
         print( json.load(file))         
 
 #Create function to greet user and display the menu
-def main():
+def main():#BigO(1):constant
     
    #greeting statment
     print("Welcome to our program")
