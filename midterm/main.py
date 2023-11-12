@@ -73,7 +73,7 @@ def SwitchTab(tabs):#BigO(N):N is index entered by user (last item in dictionary
     
 def DisplayAllTabs():#BigO(N):N is the lenght of dictionary
       for key in tabs:
-        print(tabs[key].get('title'),tabs[key].get('nest_tabs'))
+        print(tabs[key].get('title'),"\n",tabs[key].get('nest_tabs'))
             
 def OpenNestedTab(tabs):#BigO(N):N is last index in dictionary(len of dictionary)
       
