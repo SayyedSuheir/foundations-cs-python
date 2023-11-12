@@ -75,7 +75,7 @@ def DisplayAllTabs():#BigO(N):N is the lenght of dictionary
       for key in tabs:
         print(tabs[key].get('title'),tabs[key].get('nest_tabs'))
             
-def OpenNestedTab(tabs):
+def OpenNestedTab(tabs):#BigO(N):N is last index in dictionary(len of dictionary)
       
         #Ask user to enter the index of tab 
         user_index = int(input("Enter the index of tab to be nested : "))
