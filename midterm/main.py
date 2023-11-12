@@ -71,7 +71,7 @@ def SwitchTab(tabs):
     else:
          print("No tab found..")
     
-def DisplayAllTabs():
+def DisplayAllTabs():#BigO(N):N is the lenght of dictionary
       for key in tabs:
         print(tabs[key].get('title'),tabs[key].get('nest_tabs'))
             
