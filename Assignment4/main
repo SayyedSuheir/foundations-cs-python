@@ -8,25 +8,42 @@ class linkedlist:
       self.head = None
       self.size = 0
    def AddNode(self,value):
-      if self.size==0:
-        # self.value = value
-         node= Node(value)
+      node= Node(value)
+      if self.size==0:        
          self.head = node
          self.size +=1
-      else:
-        # self.value = value
-         node = Node(value)
-         self.head.next = node
+      else:        
+         l_node = self.head
+         
+         while l_node.next:
+            l_node=l_node.next
+         l_node.next = node
+         self.size += 1
+   def Display(self):
+        if self.size == 0:
+            print("Empty list...")
+        else:
+            
+            current = self.head
+            while current != None:
+                
+                print(current.value,end = " -> ")
+                
+                current = current.next
+            print("None") 
+             
+                
 def SinglyLinkedList():
     ll = linkedlist()
-    print("a. Add Node\nb. Display Nodes\nc. Search for & Delete Node\nd. Return to main menu")
-    user_sub_choice = input("Please, Choose letter from following:").lower()
-    if user_sub_choice == "a":
-       user_input=int(input("Enter number to be added: "))
-       ll.AddNode(user_input)
-       print("A new node  successfully added..")
-    if user_sub_choice == "b":
-       pass   
+    while True:
+        print("a. Add Node\nb. Display Nodes\nc. Search for & Delete Node\nd. Return to main menu")
+        user_sub_choice = input("Please, Choose letter from following:").lower()
+        if user_sub_choice == "a":
+            user_input=int(input("Enter number to be added: "))
+            ll.AddNode(user_input)
+            print("A new node  successfully added..")
+        if user_sub_choice == "b":
+            ll.Display() 
 def main():
     User_name = input("Please, Enter your name: ")
     print("______Welcome, {}______\n".format(User_name))
@@ -36,6 +53,7 @@ def main():
      if 0 < user_choice <=6:
         if user_choice == 1:
            SinglyLinkedList()
+           break
         elif user_choice == 2:
            CheckIfPalindrome()
         elif user_choice == 3:
