@@ -19,6 +19,7 @@ class linkedlist:
             l_node=l_node.next
          l_node.next = node
          self.size += 1
+        
    def Display(self):
         if self.size == 0:
             print("Empty list...")
@@ -44,9 +45,12 @@ def SinglyLinkedList():
             print("A new node  successfully added..")
         if user_sub_choice == "b":
             ll.Display() 
-def main():
-    User_name = input("Please, Enter your name: ")
-    print("______Welcome, {}______\n".format(User_name))
+        if user_sub_choice == "c":
+           pass
+        if user_sub_choice == "d":
+            MainMenu()
+            break
+def MainMenu():
     while True:
      print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
      user_choice = int(input("Choose an option from the menu by choosing number between 1 and 6 "))
@@ -64,10 +68,14 @@ def main():
            Graph()
         else:
            #emoji code from(https://www.geeksforgeeks.org/python-program-to-print-emojis/)
-           print("Goodbye {},Have a nice day \U0001f600".format(User_name))
+           print("Goodbye, Have a nice day \U0001f600")
            break
      else:
         print("Please enter number between 1 and 6 (1-6)")
+def main():
+    User_name = input("Please, Enter your name: ")
+    print("______Welcome, {}______\n".format(User_name))
+    MainMenu()
 
 
 main()
