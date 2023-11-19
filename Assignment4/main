@@ -1,3 +1,24 @@
+class Node:
+   def __init__(self,value) -> None:
+      self.next = None
+      self.value = value
+
+class linkedlist:
+   def __init__(self) -> None:
+      self.head = None
+      self.size = 0
+   def AddNode(self,value):
+      if self.size==0:
+         self.value = value
+         node= Node(value)
+         self.head = node
+         self.size +=1
+      else:
+         self.value = value
+         node = Node(value)
+         self.head.next = node
+    
+
 
 def main():
     User_name = input("Please, Enter your name: ")
@@ -8,7 +29,6 @@ def main():
      if 0 < user_choice <=6:
         if user_choice == 1:
            SinglyLinkedList()
-           print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit") 
         elif user_choice == 2:
            CheckIfPalindrome()
         elif user_choice == 3:
