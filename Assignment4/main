@@ -1,0 +1,28 @@
+
+def main():
+    User_name = input("Please, Enter your name: ")
+    print("______Welcome, {}______\n".format(User_name))
+    while True:
+     print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
+     user_choice = int(input("Choose an option from the menu by choosing number between 1 and 6 "))
+     if 0 < user_choice <=6:
+        if user_choice == 1:
+           SinglyLinkedList()
+           print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit") 
+        elif user_choice == 2:
+           CheckIfPalindrome()
+        elif user_choice == 3:
+           PriorityQueue()
+        elif user_choice == 4:
+           EvaluateExpression()
+        elif user_choice == 5:
+           Graph()
+        else:
+           #emoji code from(https://www.geeksforgeeks.org/python-program-to-print-emojis/)
+           print("Goodbye {},Have a nice day \U0001f600".format(User_name))
+           break
+     else:
+        print("Please enter number between 1 and 6 (1-6)")
+
+
+main()
