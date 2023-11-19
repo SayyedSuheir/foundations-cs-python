@@ -9,17 +9,24 @@ class linkedlist:
       self.size = 0
    def AddNode(self,value):
       if self.size==0:
-         self.value = value
+        # self.value = value
          node= Node(value)
          self.head = node
          self.size +=1
       else:
-         self.value = value
+        # self.value = value
          node = Node(value)
          self.head.next = node
-    
-
-
+def SinglyLinkedList():
+    ll = linkedlist()
+    print("a. Add Node\nb. Display Nodes\nc. Search for & Delete Node\nd. Return to main menu")
+    user_sub_choice = input("Please, Choose letter from following:").lower()
+    if user_sub_choice == "a":
+       user_input=int(input("Enter number to be added: "))
+       ll.AddNode(user_input)
+       print("A new node  successfully added..")
+    if user_sub_choice == "b":
+       pass   
 def main():
     User_name = input("Please, Enter your name: ")
     print("______Welcome, {}______\n".format(User_name))
