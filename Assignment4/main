@@ -8,48 +8,56 @@ class linkedlist:
       self.head = None
       self.tail = None
       self.size = 0
-   def AddNode(self,value,ll):
+   def AddNode(self,value):# to add node
+      #creat node
       node= Node(value)
+      #if empty linkedlist
       if self.size==0:        
          self.head = node
          self.tail = self.head
          self.size +=1
-         
+      #if not empty linkedlist   
       else:
-                 
+         #store head node to browse the linkedlist        
          current = self.head
-         
+         #loop to add nodes
          while current.next:
             current=current.next
          current.next = node
+         #to point last node
          self.tail = current
+         #increase size
          self.size += 1
       print("A new node  successfully added..")  
-   def Display(self):
+   def Display(self):# display info of linkedlist  nodes
+        #if empty
         if self.size == 0:
             print("Empty list...")
         else:
-            
+            #if not empty
             current = self.head
+            #loop while current is not none
             while current != None:
-                
+                #display result
                 print(current.value,end = " -> ")
                 
                 current = current.next
             print("None") 
    def SearchDelete(self):
-        
+        # If size is zero the it is empty linkedlist
         if self.size == 0:
            print("Empty list...") 
         else:
+           #Ask user to enter the value want to delete
            value_delete = int(input("Please, eneter the value to be deleted: "))
            self.value = value_delete
            counter = 0
            current = self.head
-           
+           #If the value at head node
            if self.head.value==value_delete:
                  self.head = current.next
                  current = self.head
+            #Count occurrence and delete  all
            while current != None:
               if current.value == value_delete:
                   counter += 1
@@ -61,30 +69,40 @@ class linkedlist:
 
               current = current.next
            print(counter) 
+           #If value doesnot exist
            if counter == 0:
-              print("Value doesnot exist...")      
+              print("Value doesnot exist...")   
+#call funtion to create linkedlist   
 def SinglyLinkedList():
+    #instance of linkedlist class..
     ll = linkedlist()
     while True:
+        #Display sub-menu
         print("a. Add Node\nb. Display Nodes\nc. Search for & Delete Node\nd. Return to main menu")
+        #Ask user to enter letter and change  it to lowercase
         user_sub_choice = input("Please, Choose letter from following:").lower()
         if user_sub_choice == "a":
+            #Ask user to enter number to be added to the linkedlist
             user_input=int(input("Enter number to be added: "))
-            ll.AddNode(user_input,ll)
+            #Call AddNode method 
+            ll.AddNode(user_input)
             
         if user_sub_choice == "b":
             ll.Display() 
         if user_sub_choice == "c":
             
             ll.SearchDelete()
-            
+         #Back to main menu   
         if user_sub_choice == "d":
             MainMenu()
             break
+#Manin menu function        
 def MainMenu():
     while True:
      print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
+     #Ask user to choose number between 1 and 6
      user_choice = int(input("Choose an option from the menu by choosing number between 1 and 6: "))
+     #looping user input 
      if 0 < user_choice <=6:
         if user_choice == 1:
            SinglyLinkedList()
@@ -98,15 +116,19 @@ def MainMenu():
         elif user_choice == 5:
            Graph()
         else:
+           #Exit  the main menu
            #emoji code from(https://www.geeksforgeeks.org/python-program-to-print-emojis/)
            print("Goodbye, Have a nice day \U0001f600")
            break
      else:
         print("Please enter number between 1 and 6 (1-6):")
+#The main function        
 def main():
+    #Ask user to enter his/her name
     User_name = input("Please, Enter your name: ")
     print("______Welcome, {}______\n".format(User_name))
+    #Call MainMenu function
     MainMenu()
 
-
+#Call main function to be executed
 main()
