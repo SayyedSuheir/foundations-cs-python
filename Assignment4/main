@@ -44,6 +44,8 @@ class linkedlist:
                 current = current.next
             print("None") 
    def SearchDelete(self):
+        counter = 0
+        current = self.head
         # If size is zero the it is empty linkedlist
         if self.size == 0:
            print("Empty list...") 
@@ -51,27 +53,31 @@ class linkedlist:
            #Ask user to enter the value want to delete
            value_delete = int(input("Please, eneter the value to be deleted: "))
            self.value = value_delete
-           counter = 0
-           current = self.head
-           #If the value at head node
-           if self.head.value==value_delete:
-                 self.head = current.next
-                 current = self.head
-            #Count occurrence and delete  all
-           while current != None:
-              if current.value == value_delete:
-                  counter += 1
-                  tmp = current
-                  tmp.next = None
-                  self.head.next = current.next
-                  current = self.head.next
-                  
-
-              current = current.next
-           print(counter) 
+           
+         #If the value at head node
+        if self.head.value==value_delete:
+               self.head = current.next
+               current = current.next
+         #Count occurrence and delete  all
+        
+        while current is not None:
+           if current.value == value_delete:
+                 counter += 1
+               
+                 tmp = current
+                 tmp.next = None
+           current = current.next 
+        else: 
+               self.head.next = current 
+           
+               current = current.next 
+                          
+        print("The value deleted successfully...",counter)
+              
+              
            #If value doesnot exist
-           if counter == 0:
-              print("Value doesnot exist...")   
+        if counter == 0:
+            print("Value doesnot exist...")   
 #call funtion to create linkedlist   
 def SinglyLinkedList():
     #instance of linkedlist class..
@@ -96,6 +102,24 @@ def SinglyLinkedList():
         if user_sub_choice == "d":
             MainMenu()
             break
+            
+def CheckIfPalindrome(string):
+   stack = []
+   queue = []
+    #push store string in stack and queue
+   for char in string:
+        stack.append(char)
+        queue.append(char)
+    # check if palindorme
+   while stack:
+      if  stack.pop() != queue.pop(0):
+        
+         print(f"{string} is not palindrom")
+         return
+      
+   print(f"{string} is palindrome")
+        
+
 #Manin menu function        
 def MainMenu():
     while True:
@@ -108,7 +132,8 @@ def MainMenu():
            SinglyLinkedList()
            break
         elif user_choice == 2:
-           CheckIfPalindrome()
+           string=input("Enter string to check if palindrome: ").replace(" ","")
+           CheckIfPalindrome(string)
         elif user_choice == 3:
            PriorityQueue()
         elif user_choice == 4:
