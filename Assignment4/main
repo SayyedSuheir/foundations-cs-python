@@ -6,18 +6,23 @@ class Node:
 class linkedlist:
    def __init__(self) -> None:
       self.head = None
+      self.tail = None
       self.size = 0
-   def AddNode(self,value):
+   def AddNode(self,value,ll):
       node= Node(value)
       if self.size==0:        
          self.head = node
+         self.tail = self.head
          self.size +=1
-      else:        
-         l_node = self.head
          
-         while l_node.next:
-            l_node=l_node.next
-         l_node.next = node
+      else:
+                 
+         current = self.head
+         
+         while current.next:
+            current=current.next
+         current.next = node
+         self.tail = current
          self.size += 1
       print("A new node  successfully added..")  
    def Display(self):
@@ -41,10 +46,19 @@ class linkedlist:
            self.value = value_delete
            counter = 0
            current = self.head
+           
+           if self.head.value==value_delete:
+                 self.head = current.next
+                 current = self.head
            while current != None:
               if current.value == value_delete:
-                 
-                 counter += 1
+                  counter += 1
+                  tmp = current
+                  tmp.next = None
+                  self.head.next = current.next
+                  current = self.head.next
+                  
+
               current = current.next
            print(counter) 
            if counter == 0:
@@ -56,7 +70,7 @@ def SinglyLinkedList():
         user_sub_choice = input("Please, Choose letter from following:").lower()
         if user_sub_choice == "a":
             user_input=int(input("Enter number to be added: "))
-            ll.AddNode(user_input)
+            ll.AddNode(user_input,ll)
             
         if user_sub_choice == "b":
             ll.Display() 
