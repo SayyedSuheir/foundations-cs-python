@@ -112,6 +112,8 @@ def CheckIfPalindrome(string):
         queue.append(char)
     # check if palindorme
    while stack:
+      #stack pop last element
+      #dequeue 
       if  stack.pop() != queue.pop(0):
         
          print(f"{string} is not palindrom")
@@ -119,7 +121,19 @@ def CheckIfPalindrome(string):
       
    print(f"{string} is palindrome")
         
-
+def PriorityQueue():
+    print("a. Add a student\nb. Interview a student\nc. Return to main menu")
+    while True:
+      user_choice = input("choose from the option below").lower()
+      if user_choice == 'a':
+        pass
+      elif user_choice == 'b':
+        pass
+      elif user_choice == 'c':
+        MainMenu()
+        break
+      else:
+          print("PLEASE choose OPTION from menu (a,b or c)")
 #Manin menu function        
 def MainMenu():
     while True:
