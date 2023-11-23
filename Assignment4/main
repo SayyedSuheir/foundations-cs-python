@@ -120,23 +120,56 @@ def CheckIfPalindrome(string):
          return
       
    print(f"{string} is palindrome")
-        
+class priorityQueue:
+    def __init__(self):
+        pass   
+class Student:
+    def __init__(self,name,mid_grade,final_grade,good_attitude):
+        self.name = name
+        self.mid_grade = mid_grade
+        self.final_grade = final_grade
+        self.good_attitude = good_attitude
+             
 def PriorityQueue():
-    print("a. Add a student\nb. Interview a student\nc. Return to main menu")
-    while True:
-      user_choice = input("choose from the option below").lower()
+   print("a. Add a student\nb. Interview a student\nc. Return to main menu")
+   while True:
+      user_choice = input("choose from the option below: ").lower()
       if user_choice == 'a':
+        #Ask the user enter student characteristics
+         name = input("Enter student full name: ")
+         
+         mid_grade = int(input("Enter student midterms grade (/100): "))
+         while mid_grade < 0 or mid_grade > 100:
+             print("PLease, Enter vaild grade")
+             mid_grade = int(input("Enter student midterms grade (/100): "))
+         final_grade = int(input("Enter student final grade (/100): "))
+         while final_grade < 0 or final_grade > 100:
+             print("PLease, Enter vaild grade")
+             final_grade = int(input("Enter student final grade (/100): "))
+            
+         good_attitude=input("Eneter T or F :").lower()
+         while good_attitude != 't' and good_attitude != 'f':
+            print("please enter T or F")
+            good_attitude = input("Eneter T or F :").lower()
+
+         if good_attitude == 't':
+                  
+                  good_attitude = True
+         else:
+                  good_attitude == False
+           
+              
+         student = Student(name,mid_grade,final_grade,good_attitude)
+      if user_choice == 'b':
         pass
-      elif user_choice == 'b':
-        pass
-      elif user_choice == 'c':
+      if user_choice == 'c':
         MainMenu()
         break
       else:
-          print("PLEASE choose OPTION from menu (a,b or c)")
+          print("PLEASE choose OPTION from menu (a,b or c) ")
 #Manin menu function        
 def MainMenu():
-    while True:
+   while True:
      print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
      #Ask user to choose number between 1 and 6
      user_choice = int(input("Choose an option from the menu by choosing number between 1 and 6: "))
@@ -154,7 +187,7 @@ def MainMenu():
            EvaluateExpression()
         elif user_choice == 5:
            Graph()
-        else:
+        elif user_choice == 6:
            #Exit  the main menu
            #emoji code from(https://www.geeksforgeeks.org/python-program-to-print-emojis/)
            print("Goodbye, Have a nice day \U0001f600")
