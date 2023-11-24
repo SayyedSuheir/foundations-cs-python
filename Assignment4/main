@@ -265,7 +265,8 @@ def EvaluateExpression(expression):
   return numbers_stack.pop()
 #Manin menu function        
 def MainMenu():
-   while True:
+   i=4
+   while 0<i<= 4:
      print("1. Singly Linked List\n2. Check if Palindrome\n3. Priority Queue\n4. Evaluate an Infix Expression\n5. Graph\n6. Exit")
      #Ask user to choose number between 1 and 6
      user_choice = int(input("Choose an option from the menu by choosing number between 1 and 6: "))
@@ -293,6 +294,9 @@ def MainMenu():
            break
      else:
         print("Please enter number between 1 and 6 (1-6):")
+     i-=1
+     print("Remaining attempts is " , i)
+     
 #The main function        
 def main():
     #Ask user to enter his/her name
