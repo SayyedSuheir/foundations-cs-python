@@ -120,92 +120,149 @@ def CheckIfPalindrome(string):
          return
       
    print(f"{string} is palindrome")
-class PQueue:
-      def __init__(self):
-        self.head = None
-        self.tail = None
-        self.size = 0
-      def Display(self):# display info of linkedlist  nodes
-        #if empty
-        if self.size == 0:
-            print("Empty list...")
-        else:
-            #if not empty
-            current = self.head
-            #loop while current is not none
-            while current != None:
-                #display result
-                print(current.value,end = " -> ")
-                
-                current = current.next
-            print("None") 
-      def Enqueue(self,student):
+# class PQueue:
+#       def __init__(self):
+#         self.head = None
         
-       pass
+#         self.size = 0
+      
+#       def Enqueue(self,student):
+        
+#        pass
         
 
-class Student:
-    def __init__(self,name,mid_grade,final_grade,good_attitude):
-        self.name = name
-        self.mid_grade = mid_grade
-        self.final_grade = final_grade
-        self.good_attitude = good_attitude
-    def __eq__(self, other): 
-        if not isinstance(other, Student):
-           return NotImplemented
-        return  self.good_attitude == other.good_attitude
+# class Student:
+#     def __init__(self,name,mid_grade,final_grade,good_attitude):
+#         self.name = name
+#         self.mid_grade = mid_grade
+#         self.final_grade = final_grade
+#         self.good_attitude = good_attitude
+   
         
         
          
    
     
              
-def PriorityQueue():
-    print("a. Add a student\nb. Interview a student\nc. Return to main menu")
-    while True:
-      user_choice = input("choose from the option below: ").lower()
-      if user_choice == 'a':
-         number_students=int(input("how many Student do you want to add: "))
-        #Ask the user enter student characteristics
-        #Handle user input
-         for i in range(number_students):
-            name = input("Enter student full name: ")
+# def PriorityQueue():
+#     print("a. Add a student\nb. Interview a student\nc. Return to main menu")
+#     while True:
+#       user_choice = input("choose from the option below: ").lower()
+#       if user_choice == 'a':
+         
+#         #Ask the user enter student characteristics
+#         #Handle user input
+         
+#             name = input("Enter student full name: ")
             
-            mid_grade = int(input("Enter student midterms grade (/100): "))
-            while mid_grade < 0 or mid_grade > 100:
-               print("PLease, Enter vaild grade")
-               mid_grade = int(input("Enter student midterms grade (/100): "))
-            final_grade = int(input("Enter student final grade (/100): "))
-            while final_grade < 0 or final_grade > 100:
-               print("PLease, Enter vaild grade")
-               final_grade = int(input("Enter student final grade (/100): "))
+#             mid_grade = int(input("Enter student midterms grade (/100): "))
+#             while mid_grade < 0 or mid_grade > 100:
+#                print("PLease, Enter vaild grade")
+#                mid_grade = int(input("Enter student midterms grade (/100): "))
+#             final_grade = int(input("Enter student final grade (/100): "))
+#             while final_grade < 0 or final_grade > 100:
+#                print("PLease, Enter vaild grade")
+#                final_grade = int(input("Enter student final grade (/100): "))
                
-            good_attitude=input("Eneter T or F :").lower()
-            while good_attitude != 't' and good_attitude != 'f':
-               print("please enter T or F")
-               good_attitude = input("Eneter T or F :").lower()
+#             good_attitude=input("Eneter T or F :").lower()
+#             while good_attitude != 't' and good_attitude != 'f':
+#                print("please enter T or F")
+#                good_attitude = input("Eneter T or F :").lower()
 
-            if good_attitude == 't':
+#             if good_attitude == 't':
                      
-                     good_attitude = True
-            else:
-                     good_attitude == False
+#                      good_attitude = True
+#             else:
+#                      good_attitude == False
 
             
-            #Student instance  
+#             #Student instance  
                
-            student = Student(name,mid_grade,final_grade,good_attitude)
+#             student1 = Student(name,mid_grade,final_grade,good_attitude)
             
-            queue = PQueue()
-            queue.Enqueue(student)
-         print(student.name)
-      elif user_choice == 'b':
-        pass
-      elif user_choice == 'c':
-        MainMenu()
-        break
+#             queue = PQueue()
+#             queue.Enqueue(student1)
+         
+#       elif user_choice == 'b':
+#         pass
+#       elif user_choice == 'c':
+#         MainMenu()
+#         break
+#       else:
+#           print("PLEASE choose OPTION from menu (a,b or c) ")
+class Stack:
+  def __init__(self):
+      self.items = []
+
+  def is_empty(self):
+      return self.items == []
+
+  def push(self, item):
+      self.items.append(item)
+
+  def pop(self):
+      return self.items.pop()
+
+  def peek(self):
+      return self.items[-1]
+
+  def size(self):
+      return len(self.items)
+  
+def EvaluateExpression(expression):
+  
+  def precedence(operator):
+      if operator in ['+', '-']:
+          return 1
+      elif operator in ['*', '/']:
+          return 2
       else:
-          print("PLEASE choose OPTION from menu (a,b or c) ")
+          return 0
+
+  def apply_operator(operators, numbers):
+      operator = operators.pop()
+      right_operand = numbers.pop()
+      left_operand = numbers.pop()
+      if operator == '+':
+          numbers.push(left_operand + right_operand)
+      elif operator == '-':
+          numbers.push(left_operand - right_operand)
+      elif operator == '*':
+          numbers.push(left_operand * right_operand)
+      elif operator == '/':
+          numbers.push(left_operand / right_operand)
+
+  numbers_stack = Stack()
+  operators_stack = Stack()
+  i = 0
+  while i < len(expression):
+      if expression[i].isdigit():
+          number = 0
+          while i < len(expression) and expression[i].isdigit():
+              number = number * 10 + int(expression[i])
+              i += 1
+          numbers_stack.push(number)
+      elif expression[i] in ['+', '-', '*', '/']:
+          while (not operators_stack.is_empty() and
+                 precedence(operators_stack.peek()) >= precedence(expression[i])):
+              apply_operator(operators_stack, numbers_stack)
+          operators_stack.push(expression[i])
+          i += 1
+      elif expression[i] == '(':
+          operators_stack.push(expression[i])
+          i += 1
+      elif expression[i] == ')':
+          while not operators_stack.is_empty() and operators_stack.peek() != '(':
+              apply_operator(operators_stack, numbers_stack)
+          operators_stack.pop()
+          i += 1
+      else:
+          i += 1
+
+  while not operators_stack.is_empty():
+      apply_operator(operators_stack, numbers_stack)
+
+  return numbers_stack.pop()
 #Manin menu function        
 def MainMenu():
    while True:
@@ -223,7 +280,10 @@ def MainMenu():
         elif user_choice == 3:
            PriorityQueue()
         elif user_choice == 4:
-           EvaluateExpression()
+           expression = input("Enter expression to be solved: ")
+           result = EvaluateExpression(expression)
+           print("The result is : ",result)
+
         elif user_choice == 5:
            Graph()
         elif user_choice == 6:
