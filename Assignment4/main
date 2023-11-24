@@ -120,49 +120,88 @@ def CheckIfPalindrome(string):
          return
       
    print(f"{string} is palindrome")
-class priorityQueue:
-    def __init__(self):
-        pass   
+class PQueue:
+      def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+      def Display(self):# display info of linkedlist  nodes
+        #if empty
+        if self.size == 0:
+            print("Empty list...")
+        else:
+            #if not empty
+            current = self.head
+            #loop while current is not none
+            while current != None:
+                #display result
+                print(current.value,end = " -> ")
+                
+                current = current.next
+            print("None") 
+      def Enqueue(self,student):
+        
+       pass
+        
+
 class Student:
     def __init__(self,name,mid_grade,final_grade,good_attitude):
         self.name = name
         self.mid_grade = mid_grade
         self.final_grade = final_grade
         self.good_attitude = good_attitude
+    def __eq__(self, other): 
+        if not isinstance(other, Student):
+           return NotImplemented
+        return  self.good_attitude == other.good_attitude
+        
+        
+         
+   
+    
              
 def PriorityQueue():
-   print("a. Add a student\nb. Interview a student\nc. Return to main menu")
-   while True:
+    print("a. Add a student\nb. Interview a student\nc. Return to main menu")
+    while True:
       user_choice = input("choose from the option below: ").lower()
       if user_choice == 'a':
+         number_students=int(input("how many Student do you want to add: "))
         #Ask the user enter student characteristics
-         name = input("Enter student full name: ")
-         
-         mid_grade = int(input("Enter student midterms grade (/100): "))
-         while mid_grade < 0 or mid_grade > 100:
-             print("PLease, Enter vaild grade")
-             mid_grade = int(input("Enter student midterms grade (/100): "))
-         final_grade = int(input("Enter student final grade (/100): "))
-         while final_grade < 0 or final_grade > 100:
-             print("PLease, Enter vaild grade")
-             final_grade = int(input("Enter student final grade (/100): "))
+        #Handle user input
+         for i in range(number_students):
+            name = input("Enter student full name: ")
             
-         good_attitude=input("Eneter T or F :").lower()
-         while good_attitude != 't' and good_attitude != 'f':
-            print("please enter T or F")
-            good_attitude = input("Eneter T or F :").lower()
+            mid_grade = int(input("Enter student midterms grade (/100): "))
+            while mid_grade < 0 or mid_grade > 100:
+               print("PLease, Enter vaild grade")
+               mid_grade = int(input("Enter student midterms grade (/100): "))
+            final_grade = int(input("Enter student final grade (/100): "))
+            while final_grade < 0 or final_grade > 100:
+               print("PLease, Enter vaild grade")
+               final_grade = int(input("Enter student final grade (/100): "))
+               
+            good_attitude=input("Eneter T or F :").lower()
+            while good_attitude != 't' and good_attitude != 'f':
+               print("please enter T or F")
+               good_attitude = input("Eneter T or F :").lower()
 
-         if good_attitude == 't':
-                  
-                  good_attitude = True
-         else:
-                  good_attitude == False
-           
-              
-         student = Student(name,mid_grade,final_grade,good_attitude)
-      if user_choice == 'b':
+            if good_attitude == 't':
+                     
+                     good_attitude = True
+            else:
+                     good_attitude == False
+
+            
+            #Student instance  
+               
+            student = Student(name,mid_grade,final_grade,good_attitude)
+            
+            queue = PQueue()
+            queue.Enqueue(student)
+         print(student.name)
+      elif user_choice == 'b':
         pass
-      if user_choice == 'c':
+      elif user_choice == 'c':
         MainMenu()
         break
       else:
