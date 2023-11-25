@@ -263,6 +263,27 @@ def EvaluateExpression(expression):
       apply_operator(operators_stack, numbers_stack)
 
   return numbers_stack.pop()
+def Graph():
+   print("a. Add vertex\nb. Add edge\nc. Remove vertex\nd. Remove edge\ne. Display vertices with a degree of X or more.\nf. Return to main menu")
+   user_choice = input("Choose from the options above: ").lower()
+   while True:
+        if user_choice == 'a':
+           AddVertex()
+        elif user_choice =='b':
+           AddEdge()
+        elif user_choice =='c':
+           RemoveVertex()
+        elif user_choice == 'd':
+            RemoveEdge()
+        elif user_choice == 'e':
+           DisplayVerticesDEgree()
+        elif user_choice == 'f':
+           MainMenu()
+           break
+        else:
+           print("Please choose a letter from a to f")
+           print("a. Add vertex\nb. Add edge\nc. Remove vertex\nd. Remove edge\ne. Display vertices with a degree of X or more.\nf. Return to main menu")
+           user_choice = input("Choose from the options above: ").lower()
 #Manin menu function        
 def MainMenu():
    i=4
