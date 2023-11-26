@@ -44,41 +44,60 @@ class linkedlist:
                 
                 current = current.next
             print("None") 
-   def SearchDelete(self):
+   def SearchDelete(self,value):
         counter = 0
         current = self.head
         # If size is zero the it is empty linkedlist
         if self.size == 0:
            print("Empty list...") 
-        else:
-           #Ask user to enter the value want to delete
-           value_delete = int(input("Please, eneter the value to be deleted: "))
-           self.value = value_delete
-           
-         #If the value at head node
-        if self.head.value==value_delete:
-               self.head = current.next
-               current = current.next
-         #Count occurrence and delete  all
+           return
+        else:   
+         
+            #Count occurrence and delete  all
+            
+            while current is not None:
+                if current.value == value:
+                        counter += 1
+                    
+                current = current.next 
+            
+            if counter == 0 :
+                print(f"{value} doesnot exist")
+                return
+            
+
+        while counter > 0:
+                # Store head node 
+                temp = self.head 
         
-        while current is not None:
-           if current.value == value_delete:
-                 counter += 1
-               
-                 tmp = current
-                 tmp.next = None
-           current = current.next 
-        else: 
-               self.head.next = current 
-           
-               current = current.next 
-                          
-        print("The value deleted successfully...",counter)
-              
-              
-           #If value doesnot exist
-        if counter == 0:
-            print("Value doesnot exist...")   
+                # If head node itself holds the key to be deleted 
+                if (temp is not None): 
+                    if (temp.value == value): 
+                        self.head = temp.next
+                        temp = None
+                        return
+        
+                # Search for the key to be deleted, keep track of the 
+                # previous node as we need to change 'prev.next' 
+                while(temp is not None): 
+                    if temp.value == value: 
+                        break
+                    prev = temp 
+                    temp = temp.next
+                    
+        
+                
+                counter -=1  
+                # Unlink the node from linked list 
+                prev.next = temp.next
+        
+                temp = None
+                self.size -=1
+        print("{} has been deleted".format(value))
+                    
+                
+            
+        
 #call funtion to create linkedlist   
 def SinglyLinkedList():
     #instance of linkedlist class..
@@ -97,8 +116,9 @@ def SinglyLinkedList():
         elif user_sub_choice == "b":
             ll.Display() 
         elif user_sub_choice == "c":
-            
-            ll.SearchDelete()
+            #Ask user to enter the value want to delete
+           value_delete = int(input("Please, eneter the value to be deleted: "))
+           ll.SearchDelete(value_delete)
          #Back to main menu   
         elif user_sub_choice == "d":
             MainMenu()
@@ -194,27 +214,29 @@ def CheckIfPalindrome(string):
 #       else:
 #           print("PLEASE choose OPTION from menu (a,b or c) ")
 class Stack:
+  #create empty list
   def __init__(self):
       self.items = []
-
+  #check if empty
   def is_empty(self):
       return self.items == []
-
+#adding items to list
   def push(self, item):
       self.items.append(item)
-
+#remove items from list
   def pop(self):
       return self.items.pop()
-
+#display last item
   def peek(self):
       return self.items[-1]
-
+#give size of list
   def size(self):
       return len(self.items)
   
 def EvaluateExpression(expression):
-  
+  #put precedence for  operators 
   def precedence(operator):
+      
       if operator in ['+', '-']:
           return 1
       elif operator in ['*', '/']:
@@ -234,28 +256,35 @@ def EvaluateExpression(expression):
           numbers.push(left_operand * right_operand)
       elif operator == '/':
           numbers.push(left_operand / right_operand)
-
+#create stack to store numbers
   numbers_stack = Stack()
+#create stack to store operators
   operators_stack = Stack()
   i = 0
+
   while i < len(expression):
+      #if it is digit store it on stack of number
       if expression[i].isdigit():
           number = 0
           while i < len(expression) and expression[i].isdigit():
               number = number * 10 + int(expression[i])
               i += 1
           numbers_stack.push(number)
+      #if operator store it on operator stack
       elif expression[i] in ['+', '-', '*', '/']:
           while (not operators_stack.is_empty() and
                  precedence(operators_stack.peek()) >= precedence(expression[i])):
               apply_operator(operators_stack, numbers_stack)
           operators_stack.push(expression[i])
           i += 1
+      #if it is  opened brackets push to operator stack
       elif expression[i] == '(':
           operators_stack.push(expression[i])
           i += 1
+      # if it is closed brackets check the stack operator if not empty and last item is not opened brackets
       elif expression[i] == ')':
           while not operators_stack.is_empty() and operators_stack.peek() != '(':
+              #call apply operator function
               apply_operator(operators_stack, numbers_stack)
           operators_stack.pop()
           i += 1
@@ -268,32 +297,47 @@ def EvaluateExpression(expression):
   return numbers_stack.pop()
 
 class Graphs:
+    #create empty dict
     def __init__(self) -> None:
         self.adj_list ={}
+    
     def AddVertex(self,vertex):
+        #if vertex doesnot exist
         if vertex not in self.adj_list:
+            #store empty linkedlist to the vertex 
+            #Each vertex is key
+            
             self.adj_list[vertex] = linkedlist()
             return
         print("Vertex",vertex,"already exists\n")
+    
     def AddEdge(self,vertex1,vertex2):
+        #check if vertex is not in list
         if vertex1 in self.adj_list and vertex2 in self.adj_list:
+           #create edge between vertices
            self.adj_list[vertex1].AddNode (vertex2)
            self.adj_list[vertex2].AddNode(vertex1)
-           
+        #if both vertices not exist  
         elif vertex1 not in self.adj_list and vertex2 not in self.adj_list:
             print("Vertices",vertex1,"and",vertex2,"not exist")
+        #To specify which vertex doesnot exist(v1 or v2)
         elif vertex1 not in self.adj_list:
             print("Vertex",vertex1,"doesnot exist")
         else:
             print("Vertex",vertex2,"doesnot exist")
+    #Display graph : used to visualize edges and vertices
     def DisplayGraph(self):
- 
+        #if graph is empty
         if self.adj_list == {}:
          print("Graph is empty!\n")
          return
+        #loop to show every vertex with its edge 
         for vertex in self.adj_list:  
             print(vertex + ":", end=" ")
             self.adj_list[vertex].Display() 
+    def RemoveVertex(self,vertex):
+        
+        self.adj_list[vertex].pop()
 
 def Graph(graph):
    
@@ -312,9 +356,10 @@ def Graph(graph):
           vertex1 = input("Enter name of first vertex: ")
           vertex2 = input("Enter name of second vertex: ")
           graph.AddEdge(vertex1,vertex2)
-          
+          print("Edge successfully added ({})".format(graph.DisplayGraph()))
         elif user_choice =='c':
-           RemoveVertex()
+           vertex = input("Enter the name of vertex you want to remove: ")
+           graph.RemoveVertex(vertex)
         elif user_choice == 'd':
             RemoveEdge()
         elif user_choice == 'e':
@@ -338,15 +383,16 @@ def MainMenu():
            SinglyLinkedList()
            break
         elif user_choice == 2:
-           string=input("Enter string to check if palindrome: ").replace(" ","")
+           string=input("Enter string to check if palindrome: ").replace(" ","").lower()
            CheckIfPalindrome(string)
+           MainMenu()
         elif user_choice == 3:
            PriorityQueue()
         elif user_choice == 4:
            expression = input("Enter expression to be solved: ")
            result = EvaluateExpression(expression)
            print("The result is : ",result)
-
+           MainMenu()
         elif user_choice == 5:
            graph = Graphs()
            Graph(graph)
