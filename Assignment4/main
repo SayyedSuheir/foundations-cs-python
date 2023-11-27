@@ -337,7 +337,11 @@ class Graphs:
             self.adj_list[vertex].Display() 
     def RemoveVertex(self,vertex):
         
-        self.adj_list[vertex].pop()
+        
+        value = self.adj_list[vertex]
+        value.SearchDelete(value)
+        del self.adj_list[vertex]
+        print("Vertex deleted")
 
 def Graph(graph):
    
@@ -350,16 +354,19 @@ def Graph(graph):
            vertex_name = input("Enter name of vertex to be added:")
            
            graph.AddVertex(vertex_name)
-   
+           Graph(graph)
         elif user_choice =='b':
           
           vertex1 = input("Enter name of first vertex: ")
           vertex2 = input("Enter name of second vertex: ")
           graph.AddEdge(vertex1,vertex2)
           print("Edge successfully added ({})".format(graph.DisplayGraph()))
+          Graph(graph)
         elif user_choice =='c':
            vertex = input("Enter the name of vertex you want to remove: ")
            graph.RemoveVertex(vertex)
+           graph.DisplayGraph()
+           Graph(graph)
         elif user_choice == 'd':
             RemoveEdge()
         elif user_choice == 'e':
